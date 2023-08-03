@@ -1,0 +1,38 @@
+<h1 mat-dialog-title>{{ data.title }} Data</h1>
+
+<div *ngIf="data.title != 'Delete'">
+  <div mat-dialog-content>
+    <p>{{ data.title }} actor data</p>
+    <div class="dialog-form">
+      <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input matInput [(ngModel)]="data.first_name">
+      </mat-form-field>
+    </div>
+    <div class="dialog-form">
+      <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput [(ngModel)]="data.last_name">
+      </mat-form-field>
+    </div>
+    <p class="text-danger" *ngIf="isFormEmpty">*Please fill in all fields.</p>
+  </div>
+  
+  <div mat-dialog-actions class="d-flex justify-content-end">
+      <button mat-button (click)="onNoClick()">Cancel</button>
+      <button mat-button (click)="onSaveClick()" cdkFocusInitial>Save</button>
+  </div>
+</div>
+
+<div *ngIf="data.title == 'Delete'">
+  <div mat-dialog-content>
+    <p> Are you sure you want to delete {{ data.first_name }} {{ data.last_name }} actor data?</p>
+  </div>
+  
+  <div mat-dialog-actions class="d-flex justify-content-end">
+      <button mat-button (click)="onNoClick()">Cancel</button>
+      <button mat-button [mat-dialog-close]="{first_name: data.first_name, last_name: data.last_name}" cdkFocusInitial>Delete</button>
+  </div>
+</div>
+
+

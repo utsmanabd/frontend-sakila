@@ -1,0 +1,6 @@
+.dialog-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%; /* Atur lebar maksimum form mengikuti lebar dialog */
+  width: 100%;
+}
